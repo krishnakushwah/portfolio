@@ -1,19 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:portfolio/views/home_view.dart';
+import 'package:portfolio/routes/app_pages.dart';
+import 'package:portfolio/views/home/home_binding.dart';
+import 'package:portfolio/core/theme/app_theme.dart';
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(const PortfolioApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class PortfolioApp extends StatelessWidget {
+  const PortfolioApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      title: 'Your Name | Flutter Developer',
       debugShowCheckedModeBanner: false,
-      home: HomeView(),
+      initialBinding: HomeBinding(),
+      initialRoute: AppRoutes.home,
+      getPages: AppPages.pages,
+      theme: AppTheme.light,
+      darkTheme: AppTheme.dark,
+      themeMode: ThemeMode.dark,
+      defaultTransition: Transition.fadeIn,
+      transitionDuration: const Duration(milliseconds: 350),
     );
   }
 }
