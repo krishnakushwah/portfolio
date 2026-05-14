@@ -14,24 +14,17 @@ class Responsive {
       device(context) == DeviceSize.mobile;
 
   static double maxWidth(BuildContext context) {
-    switch (device(context)) {
-      case DeviceSize.mobile:
-        return double.infinity;
-      case DeviceSize.tablet:
-        return 920;
-      case DeviceSize.desktop:
-        return 1180;
-    }
+    return double.infinity;
   }
 
   static EdgeInsets pagePadding(BuildContext context) {
     switch (device(context)) {
       case DeviceSize.mobile:
-        return const EdgeInsets.symmetric(horizontal: 20);
+        return const EdgeInsets.symmetric(horizontal: 24);
       case DeviceSize.tablet:
-        return const EdgeInsets.symmetric(horizontal: 36);
+        return const EdgeInsets.symmetric(horizontal: 60);
       case DeviceSize.desktop:
-        return const EdgeInsets.symmetric(horizontal: 56);
+        return const EdgeInsets.symmetric(horizontal: 50);
     }
   }
 }

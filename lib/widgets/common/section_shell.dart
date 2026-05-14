@@ -22,8 +22,12 @@ class SectionShell extends StatelessWidget {
     return Container(
       key: sectionKey,
       width: double.infinity,
+      constraints: BoxConstraints(
+        minHeight: Responsive.isMobile(context) ? 0 : MediaQuery.sizeOf(context).height * 0.7,
+      ),
       padding: EdgeInsets.symmetric(
-        vertical: Responsive.isMobile(context) ? 56 : 84,
+        // vertical: Responsive.isMobile(context) ? 60 : 100,
+        vertical: Responsive.isMobile(context) ? 60 : 50,
       ),
       child: Center(
         child: Container(
@@ -31,35 +35,33 @@ class SectionShell extends StatelessWidget {
           padding: Responsive.pagePadding(context),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 eyebrow.toUpperCase(),
                 style: TextStyle(
                   color: Theme.of(context).colorScheme.primary,
                   fontWeight: FontWeight.w800,
-                  fontSize: 12,
-                  letterSpacing: 0,
+                  fontSize: 18,
+                  letterSpacing: 2,
                 ),
               ),
-              const SizedBox(height: 12),
-              ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 760),
-                child: Text(
-                  title,
-                  style: Theme.of(context).textTheme.displayMedium,
-                ),
+              const SizedBox(height: 16),
+              Text(
+                title,
+                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                      fontSize: Responsive.isMobile(context) ? 32 : 35,
+                      fontWeight: FontWeight.bold,
+                    ),
               ),
               if (subtitle != null) ...[
-                const SizedBox(height: 14),
-                ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 760),
-                  child: Text(
-                    subtitle!,
-                    style: Theme.of(context).textTheme.bodyLarge,
-                  ),
+                const SizedBox(height: 15),
+                Text(subtitle!,
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: 16, height: 1.6,
+                        color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),),
                 ),
               ],
-              const SizedBox(height: 32),
+              const SizedBox(height: 48),
               child,
             ],
           ),

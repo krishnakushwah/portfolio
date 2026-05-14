@@ -11,8 +11,9 @@ class FooterSection extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.symmetric(vertical: 34),
+      padding: const EdgeInsets.symmetric(vertical: 48),
       decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.surface.withOpacity(0.3),
         border: Border(
           top: BorderSide(
             color: Theme.of(
@@ -23,32 +24,36 @@ class FooterSection extends GetView<HomeController> {
       ),
       child: Center(
         child: Container(
-          constraints: BoxConstraints(maxWidth: Responsive.maxWidth(context)),
           padding: Responsive.pagePadding(context),
-          child: Wrap(
-            alignment: WrapAlignment.spaceBetween,
-            crossAxisAlignment: WrapCrossAlignment.center,
-            runSpacing: 18,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('(c) 2026 ${PortfolioData.name}. Flutter Developer.'),
-              Wrap(
-                spacing: 6,
-                children: [
-                  TextButton(
-                    onPressed: () => controller.scrollTo(controller.aboutKey),
-                    child: const Text('About'),
-                  ),
-                  TextButton(
-                    onPressed: () =>
-                        controller.scrollTo(controller.projectsKey),
-                    child: const Text('Projects'),
-                  ),
-                  TextButton(
-                    onPressed: () => controller.scrollTo(controller.contactKey),
-                    child: const Text('Contact'),
-                  ),
-                ],
+              Text(
+                '© ${DateTime.now().year} ${PortfolioData.name}. All rights reserved.',
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+                ),
               ),
+              if (!Responsive.isMobile(context))
+                Row(
+                  children: [
+                    TextButton(
+                      onPressed: () => controller.scrollTo(controller.aboutKey),
+                      child: const Text('About'),
+                    ),
+                    const SizedBox(width: 20),
+                    TextButton(
+                      onPressed: () =>
+                          controller.scrollTo(controller.projectsKey),
+                      child: const Text('Projects'),
+                    ),
+                    const SizedBox(width: 20),
+                    TextButton(
+                      onPressed: () => controller.scrollTo(controller.contactKey),
+                      child: const Text('Contact'),
+                    ),
+                  ],
+                ),
             ],
           ),
         ),

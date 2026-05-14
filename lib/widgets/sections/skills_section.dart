@@ -13,22 +13,32 @@ class SkillsSection extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    final mobile = Responsive.isMobile(context);
+    final device = Responsive.device(context);
+    final crossAxisCount = switch (device) {
+      DeviceSize.mobile => 1,
+      DeviceSize.tablet => 2,
+      DeviceSize.desktop => 4,
+    };
     return SectionShell(
       sectionKey: controller.skillsKey,
       eyebrow: 'Skills',
-      title: 'Core Flutter capabilities recruiters look for.',
+      //
+      // title:
+      // 'Technologies and tools I use to build scalable Flutter applications.',
+      title:
+      'Production-ready Flutter development focused on performance and scalability.',
+
       subtitle:
-          'A practical stack for building scalable, store-ready applications with stable APIs, polished UI, and maintainable code.',
-      child: GridView.builder(
-        shrinkWrap: true,
+      'Focused on creating high-performance mobile and web applications with clean architecture, responsive UI, efficient state management, and production-ready integrations.',
+
+      child: GridView.builder(    shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         itemCount: PortfolioData.skills.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: mobile ? 1 : 3,
-          crossAxisSpacing: 16,
-          mainAxisSpacing: 16,
-          childAspectRatio: mobile ? 3.3 : 2.5,
+          crossAxisCount: crossAxisCount,
+          crossAxisSpacing: 20,
+          mainAxisSpacing: 20,
+          childAspectRatio: device == DeviceSize.mobile ? 3.3 : 3.3,
         ),
         itemBuilder: (context, index) {
           final skill = PortfolioData.skills[index];

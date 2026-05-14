@@ -24,13 +24,14 @@ class HomeView extends GetView<HomeController> {
             child: SingleChildScrollView(
               controller: controller.scrollController,
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: const [
                   HeroSection(),
                   AboutSection(),
                   SkillsSection(),
                   ExperienceSection(),
                   ProjectsSection(),
-                  AchievementsSection(),
+                  // AchievementsSection(),
                   ContactSection(),
                   FooterSection(),
                 ],

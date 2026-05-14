@@ -15,7 +15,7 @@ class PortfolioApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Your Name | Flutter Developer',
+      title: 'Krishna | Flutter Developer',
       debugShowCheckedModeBanner: false,
       initialBinding: HomeBinding(),
       initialRoute: AppRoutes.home,

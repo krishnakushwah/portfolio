@@ -39,8 +39,8 @@ class HeroSection extends GetView<HomeController> {
               : const Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Expanded(flex: 6, child: _HeroCopy()),
-                    SizedBox(width: 42),
+                    Expanded(flex: 7, child: _HeroCopy()),
+                    SizedBox(width: 60),
                     Expanded(
                       flex: 5,
                       child: Reveal(

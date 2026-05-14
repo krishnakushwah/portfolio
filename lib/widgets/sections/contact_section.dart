@@ -19,10 +19,8 @@ class ContactSection extends GetView<HomeController> {
     return SectionShell(
       sectionKey: controller.contactKey,
       eyebrow: 'Contact',
-      title:
-          'Available for Flutter roles, remote jobs, and freelance product builds.',
-      subtitle:
-          'Send a message or connect directly through email, WhatsApp, LinkedIn, or GitHub.',
+      title: 'Available for Flutter roles, remote jobs, and freelance product builds.',
+      subtitle: 'Send a message or connect directly through email, WhatsApp, LinkedIn, or GitHub.',
       child: mobile
           ? const Column(
               children: [_ContactForm(), SizedBox(height: 18), _ContactLinks()],
@@ -114,13 +112,13 @@ class _ContactLinks extends StatelessWidget {
           _ContactTile(
             icon: FontAwesomeIcons.linkedinIn,
             label: 'LinkedIn',
-            value: 'linkedin.com/in/yourusername',
+            value: PortfolioData.linkedIn,
             url: PortfolioData.linkedIn,
           ),
           _ContactTile(
             icon: FontAwesomeIcons.github,
             label: 'GitHub',
-            value: 'github.com/yourusername',
+            value: PortfolioData.github,
             url: PortfolioData.github,
           ),
         ],
